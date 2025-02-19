@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:46:41 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 10:45:05 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/19 14:27:44 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ int	iterating_man(double real, double imag)
 	new_real = real;
 	new_imag = imag;
 	i = 0;
-	while (i < 100)
+	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
 	{
 		tmp = (new_real * new_real) - (new_imag * new_imag) + real;
 		new_imag = 2 * new_real * new_imag + imag;
 		new_real = tmp;
-		if ((new_real * new_real) + (new_imag * new_imag) > 4)
-			break ;
 		i++;
 	}
 	return (i);
