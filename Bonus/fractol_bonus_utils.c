@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:31:43 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 13:51:16 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:00:04 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ double	ft_atod(char *str)
 		i++;
 	}
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		r = (r * 10) + (str[i] - '0');
-		i++;
-	}
+		r = (r * 10) + (str[i++] - '0');
 	if (str[i] && str[i] == '.')
 		r = decimal(str, r, i);
+	if ((r * sign) > 2 || (r * sign) < -2)
+	{
+		ft_putstr_fd("a number between 2.0 and -2.0\n", 2);
+		exit(1);
+	}
 	return (r * sign);
 }
 
@@ -72,9 +74,9 @@ int	coloring(int i, int max, t_data data)
 
 	if (i == max)
 		return (0x000000);
-	r = (i * data.r) % 256;
-	g = (i * data.g) % 256;
-	b = (i * data.b) % 256;
+	r = (i * data.r + 50) % 256;
+	g = (i * data.g + 100) % 256;
+	b = (i * data.b + 150) % 256;
 	return (r << 16 | g << 8 | b);
 }
 

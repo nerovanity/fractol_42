@@ -9,13 +9,13 @@ SRCS = Mandatory/fractol.c \
 		Mandatory/Julia.c
 BON = Bonus/fractol_bonus.c \
 		Bonus/fractol_bonus_utils.c \
-		Bonus/libft1.c \
-		Bonus/close_mlx.c \
+		Bonus/libft1_bonus.c \
+		Bonus/close_mlx_bonus.c \
 		Bonus/fractol_bonus_utils2.c \
-		Bonus/mandelbrot.c \
-		Bonus/Julia.c \
-		Bonus/burning_ship.c \
-		Bonus/events.c
+		Bonus/mandelbrot_bonus.c \
+		Bonus/Julia_bonus.c \
+		Bonus/burning_ship_bonus.c \
+		Bonus/events_bonus.c
 OBJECTS = $(SRCS:.c=.o)
 OBJECTS_BON = $(BON:.c=.o)
 NAME = fractol

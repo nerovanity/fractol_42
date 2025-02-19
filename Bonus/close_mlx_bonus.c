@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft1.c                                           :+:      :+:    :+:   */
+/*   close_mlx_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 09:42:11 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 11:44:37 by ihamani          ###   ########.fr       */
+/*   Created: 2025/02/18 10:21:41 by ihamani           #+#    #+#             */
+/*   Updated: 2025/02/19 14:33:12 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	ft_putstr_fd(char *str, int fd)
+void	destroy(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		write(fd, &str[i++], 1);
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }
 
-size_t	ft_strlen(char const *str)
+int	esc(int keycode, t_data *data)
 {
-	size_t	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	if (keycode == 65307)
+	{
+		destroy(data);
+		exit(0);
+	}
+	return (0);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	close_b(t_data *data)
 {
-	int	i;
+	destroy(data);
+	exit(0);
+	return (0);
+}
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+void	close_mlx(t_data *data)
+{
+	mlx_hook(data->win, 2, 1, esc, data);
+	mlx_hook(data->win, 17, 0, close_b, data);
 }

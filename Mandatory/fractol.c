@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 09:51:38 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:04:57 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_double(char *str)
 		i++;
 	if (str[i] == '\0')
 	{
-		ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 		exit(1);
 	}
 	while (str[i])
@@ -59,14 +59,14 @@ void	check_double(char *str)
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '.'
 				|| str[i] == '-' || str[i] == '+'))
 		{
-			ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+			ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 			exit(1);
 		}
 		i++;
 	}
 	if (check_sign(str) == 0)
 	{
-		ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 		exit(1);
 	}
 }

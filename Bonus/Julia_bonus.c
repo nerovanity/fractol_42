@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Julia.c                                            :+:      :+:    :+:   */
+/*   Julia_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:54:31 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 14:20:01 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:00:58 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	julia(t_data *data, double j_x, double j_y)
 		while (x < WIDTH)
 		{
 			real = (scale(x, -2.0, 2.0, WIDTH) * data->zoom) + -data->shift_x;
-			imag = (scale(y, 2.0, -2.0, HEIGHT) * data->zoom) + -data->shift_y;
+			imag = (scale(y, 2.0, -2.0, HEIGHT) * data->zoom) + data->shift_y;
 			color = coloring(iterating_julia(real, imag, j_x, j_y), 100, *data);
 			put_pixel(data, x, y, color);
 			x++;

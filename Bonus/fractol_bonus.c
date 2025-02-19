@@ -6,7 +6,7 @@
 /*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 13:45:52 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/19 15:04:30 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	window_init(t_data data)
 	data.zoom = 1;
 	data.shift_x = 0;
 	data.shift_y = 0;
-	data.r = 25;
-	data.g = 18;
-	data.b = 8;
+	data.r = 5;
+	data.g = 3;
+	data.b = 7;
 	drawing_fractal_set(&data, data.set);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
 	hooks_handle(&data);
@@ -59,7 +59,7 @@ void	check_double(char *str)
 		i++;
 	if (str[i] == '\0')
 	{
-		ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 		exit(1);
 	}
 	while (str[i])
@@ -67,14 +67,14 @@ void	check_double(char *str)
 		if (!((str[i] >= '0' && str[i] <= '9')
 				|| str[i] == '.' || str[i] == '-' || str[i] == '+'))
 		{
-			ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+			ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 			exit(1);
 		}
 		i++;
 	}
 	if (check_sign(str) == 0)
 	{
-		ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"", 2);
+		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"", 2);
 		exit(1);
 	}
 }
