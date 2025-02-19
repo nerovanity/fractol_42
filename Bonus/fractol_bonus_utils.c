@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*   fractol_bonus_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:31:43 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/18 20:56:07 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/19 13:51:16 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	skip_ws(const char *str)
 {
@@ -64,7 +64,7 @@ double	ft_atod(char *str)
 	return (r * sign);
 }
 
-int	coloring(int i, int max)
+int	coloring(int i, int max, t_data data)
 {
 	int	r;
 	int	g;
@@ -72,9 +72,9 @@ int	coloring(int i, int max)
 
 	if (i == max)
 		return (0x000000);
-	r = (iteration * 25) % 256;
-	g = (iteration * 6) % 256;
-	b = (iteration * 8) % 256;
+	r = (i * data.r) % 256;
+	g = (i * data.g) % 256;
+	b = (i * data.b) % 256;
 	return (r << 16 | g << 8 | b);
 }
 
@@ -84,12 +84,17 @@ int	args(int ac, char **av)
 		return (1);
 	else if (ac == 4 && !ft_strcmp(av[1], "Julia"))
 		return (2);
+	else if (ac == 2 && !ft_strcmp(av[1], "Burning ship"))
+		return (3);
 	else
 	{
 		if (ac == 2 && !ft_strcmp(av[1], "Julia"))
 			ft_putstr_fd("./fractol Julia \"0.8\" \"0.2\"\n", 2);
 		else
-			ft_putstr_fd("./fractol \"Mandelbrot or Julia\"\n", 2);
+		{
+			ft_putstr_fd("./fractol \"Mandelbrot or Julia ", 2);
+			ft_putstr_fd("or \"Burning ship\"\"\n", 2);
+		}
 		return (-1);
 	}
 	return (0);

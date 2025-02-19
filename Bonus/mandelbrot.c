@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:46:41 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/18 20:50:15 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/19 14:15:48 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	iterating_man(double real, double imag)
 {
@@ -22,13 +22,11 @@ int	iterating_man(double real, double imag)
 	new_real = real;
 	new_imag = imag;
 	i = 0;
-	while (i < 100)
+	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
 	{
 		tmp = (new_real * new_real) - (new_imag * new_imag) + real;
 		new_imag = 2 * new_real * new_imag + imag;
 		new_real = tmp;
-		if ((new_real * new_real) + (new_imag * new_imag) > 4)
-			break ;
 		i++;
 	}
 	return (i);
@@ -48,9 +46,9 @@ void	mandelbrot(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			real = scale(x, 1.0, -2.0, WIDTH) * data->zoom;
-			imag = scale(y, 1.5, -1.5, HEIGHT) * data->zoom;
-			color = coloring(iterating_man(real, imag), 100);
+			real = (scale(x, 1.0, -2.0, WIDTH) * data->zoom) + data->shift_x;
+			imag = (scale(y, 1.5, -1.5, HEIGHT) * data->zoom) + data->shift_y;
+			color = coloring(iterating_man(real, imag), 100, *data);
 			put_pixel(data, x, y, color);
 			x++;
 		}

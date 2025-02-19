@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/18 20:56:03 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/19 09:51:38 by ihamani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	drawing_fractal_set(t_data *data, int set)
 	if (set == 1)
 		mandelbrot(data);
 	else if (set == 2)
-		julia(data, data->r, data->i);
+		julia(data, data->x, data->y);
 }
 
 int	window_init(t_data data)
@@ -34,7 +34,7 @@ int	window_init(t_data data)
 	if (!data.addr)
 		return (destroy(&data), 1);
 	data.zoom = 1;
-	drawing_fractal_set(&data, data.option);
+	drawing_fractal_set(&data, data.set);
 	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
 	hooks_handle(&data);
 	close_mlx(&data);

@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/19 12:42:24 by ihamani           #+#    #+#             */
+/*   Updated: 2025/02/19 14:14:49 by ihamani          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol_bonus.h"
+
+int	iterating_bur(double real, double imag)
+{
+	int		i;
+	double	new_real;
+	double	new_imag;
+	double	tmp;
+
+	new_real = real;
+	new_imag = imag;
+	i = 0;
+	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
+	{
+		tmp = (new_real * new_real) - (new_imag * new_imag) + real;
+		new_imag = fabs(2 * new_real * new_imag) + imag;
+		new_real = tmp;
+		i++;
+	}
+	return (i);
+}
+
+void	burning_ship(t_data *data)
+{
+	int		x;
+	int		y;
+	int		color;
+	double	real;
+	double	imag;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			real = (scale(x, 1.0, -2.0, WIDTH) * data->zoom) + data->shift_x;
+			imag = (scale(y, 1.5, -1.5, HEIGHT) * data->zoom) + data->shift_y;
+			color = coloring(iterating_bur(real, imag), 100, *data);
+			put_pixel(data, x, y, color);
+			x++;
+		}
+		y++;
+	}
+}
