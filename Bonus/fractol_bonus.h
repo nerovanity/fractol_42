@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:46:37 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 13:52:14 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:26:38 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ double	scale(int pixel, double max, double min, int size);
 void	close_mlx(t_data *data);
 void	mandelbrot(t_data *data);
 void	drawing_fractal_set(t_data *data, int option);
-int		mouse_wheel(int button, int x, int y, t_data *data);
 void	julia(t_data *data, double j_x, double j_y);
 int		check_sign(char *str);
 int		coloring(int i, int max, t_data data);
 void	destroy(t_data *data);
 void	burning_ship(t_data *data);
 void	mlx_events(t_data *data);
+void	throw_err(char *str);
 
 #endif

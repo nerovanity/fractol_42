@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:03:34 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 10:44:38 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:26:24 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	hooks_handle(t_data *data)
-{
-	mlx_mouse_hook(data->win, mouse_wheel, data);
-}
 
 int	mouse_wheel(int button, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
 	if (button == 4)
-		data->zoom *= 1.1;
+	data->zoom *= 1.1;
 	else if (button == 5)
 		data->zoom *= 0.9;
-	else
+		else
 		return (0);
 	if (data->set == 1)
 		drawing_fractal_set(data, 1);
 	else if (data->set == 2)
-		drawing_fractal_set(data, 2);
+	drawing_fractal_set(data, 2);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
+}
+
+void	hooks_handle(t_data *data)
+{
+	mlx_mouse_hook(data->win, mouse_wheel, data);
 }
 
 void	put_pixel(t_data *data, int x, int y, int color)

@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:31:43 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:10:49 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 18:25:34 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,17 @@ double	decimal(char *str, double r, int i)
 	t = 10;
 	j = i + 1;
 	if (i == 0 || !str[j] || str[j] == '.')
-	{
-		ft_putstr_fd("please provide a valid number\n", 2);
-		exit(1);
-	}
+		throw_err("please provide a valid number\n");
 	if (i != 0 && !(str[i - 1] >= '0' && str[j - 1] <= '9'))
-	{
-		ft_putstr_fd("please provide a valid number\n", 2);
-		exit(1);
-	}
+		throw_err("please provide a valid number\n");
 	while (str[j] && str[j] >= '0' && str[j] <= '9')
 	{
 		r += (str[j] - '0') / t;
 		t *= 10;
 		j++;
 	}
+	if (str[j])
+		throw_err("please provide a valid number\n");
 	return (r);
 }
 
@@ -69,10 +65,7 @@ double	ft_atod(char *str)
 	if (str[i] && str[i] == '.')
 		r = decimal(str, r, i);
 	if ((r * sign) > 2 || (r * sign) < -2)
-	{
-		ft_putstr_fd("a number between 2.0 and -2.0\n", 2);
-		exit(1);
-	}
+		throw_err("a number between 2.0 and -2.0\n");
 	return (r * sign);
 }
 

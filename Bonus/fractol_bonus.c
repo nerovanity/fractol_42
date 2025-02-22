@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:11:10 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 18:25:13 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,22 @@ void	check_double(char *str)
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '\0')
-	{
-		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-		exit(1);
-	}
+		throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
 	while (str[i])
 	{
 		if (!((str[i] >= '0' && str[i] <= '9')
 				|| str[i] == '.' || str[i] == '-' || str[i] == '+'))
-		{
-			ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-			exit(1);
-		}
+			throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
 		i++;
 	}
 	if (check_sign(str) == 0)
-	{
-		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-		exit(1);
-	}
+		throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
+}
+
+void	throw_err(char *str)
+{
+	ft_putstr_fd(str ,2);
+	exit(1);
 }
 
 int	main(int ac, char **av)

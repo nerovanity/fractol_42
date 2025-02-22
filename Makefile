@@ -1,5 +1,5 @@
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = 
 SRCS = Mandatory/fractol.c \
 		Mandatory/fractol_utils.c \
 		Mandatory/libft1.c \

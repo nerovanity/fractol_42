@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:10:26 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 18:21:44 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ int	window_init(t_data data)
 	return (0);
 }
 
+void	throw_err(char *str)
+{
+	ft_putstr_fd(str ,2);
+	exit(1);
+}
+
 void	check_double(char *str)
 {
 	int	i;
@@ -50,25 +56,16 @@ void	check_double(char *str)
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '\0')
-	{
-		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-		exit(1);
-	}
+		throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
 	while (str[i])
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '.'
 				|| str[i] == '-' || str[i] == '+'))
-		{
-			ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-			exit(1);
-		}
+			throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
 		i++;
 	}
 	if (check_sign(str) == 0)
-	{
-		ft_putstr_fd("./fractol Julia \"-0.8\" \"0.156\"\n", 2);
-		exit(1);
-	}
+		throw_err("./fractol Julia \"-0.8\" \"0.156\"\n");
 }
 
 int	main(int ac, char **av)
@@ -90,9 +87,6 @@ int	main(int ac, char **av)
 	if (!data.mlx)
 		return (1);
 	if (window_init(data))
-	{
-		ft_putstr_fd("somthing went wrong\n", 2);
-		exit(1);
-	}
+		throw_err("somthing went wrong\n");
 	return (0);
 }
