@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:46:37 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:38 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 20:10:53 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_data
 	double	zoom;
 	double	x;
 	double	y;
+	double	max_x;
+	double	min_x;
+	double	max_y;
+	double	min_y;
 	double	shift_x;
 	double	shift_y;
 	int		r;
@@ -61,5 +65,6 @@ void	destroy(t_data *data);
 void	burning_ship(t_data *data);
 void	mlx_events(t_data *data);
 void	throw_err(char *str);
+double	calc(double pixel, double max, double min, t_data *data);
 
 #endif

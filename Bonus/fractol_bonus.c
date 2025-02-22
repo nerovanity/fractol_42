@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:25:13 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 20:03:03 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,29 @@
 void	drawing_fractal_set(t_data *data, int set)
 {
 	if (set == 1)
+	{
+		data->max_x = 1.0;
+		data->min_x = -2.0;
+		data->max_y = 1.5;
+		data->min_y = -1.5;
 		mandelbrot(data);
+	}
 	else if (set == 2)
+	{
+		data->max_x = 2.0;
+		data->min_x = -2.0;
+		data->max_y = 2.0;
+		data->min_y = -2.0;
 		julia(data, data->x, data->y);
+	}
 	else if (set == 3)
+	{
+		data->max_x = 1.0;
+		data->min_x = -2.0;
+		data->max_y = 1.5;
+		data->min_y = -1.5;
 		burning_ship(data);
+	}
 }
 
 int	window_init(t_data data)
@@ -72,7 +90,7 @@ void	check_double(char *str)
 
 void	throw_err(char *str)
 {
-	ft_putstr_fd(str ,2);
+	ft_putstr_fd(str, 2);
 	exit(1);
 }
 

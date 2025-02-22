@@ -12,6 +12,7 @@ BON = Bonus/fractol_bonus.c \
 		Bonus/libft1_bonus.c \
 		Bonus/close_mlx_bonus.c \
 		Bonus/fractol_bonus_utils2.c \
+		Bonus/fractol_bonus_utils3.c \
 		Bonus/mandelbrot_bonus.c \
 		Bonus/Julia_bonus.c \
 		Bonus/burning_ship_bonus.c \

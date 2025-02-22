@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:51:24 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:21:44 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 20:04:28 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	window_init(t_data data)
 
 void	throw_err(char *str)
 {
-	ft_putstr_fd(str ,2);
+	ft_putstr_fd(str, 2);
 	exit(1);
 }
 

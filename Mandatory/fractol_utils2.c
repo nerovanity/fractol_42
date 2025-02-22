@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:03:34 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:24 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 20:04:37 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	mouse_wheel(int button, int x, int y, t_data *data)
 	(void)x;
 	(void)y;
 	if (button == 4)
-	data->zoom *= 1.1;
+		data->zoom *= 1.05;
 	else if (button == 5)
-		data->zoom *= 0.9;
-		else
+		data->zoom *= 0.95;
+	else
 		return (0);
 	if (data->set == 1)
 		drawing_fractal_set(data, 1);
 	else if (data->set == 2)
-	drawing_fractal_set(data, 2);
+		drawing_fractal_set(data, 2);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }

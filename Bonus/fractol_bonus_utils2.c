@@ -6,7 +6,7 @@
 /*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:03:34 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:05 by nero             ###   ########.fr       */
+/*   Updated: 2025/02/22 20:11:42 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int	mouse_wheel(int button, int x, int y, t_data *data)
 {
-	(void)x;
-	(void)y;
-	if (button == 4)
-		data->zoom *= 1.1;
-	else if (button == 5)
-		data->zoom *= 0.9;
+	double	mouse_real;
+	double	mouse_imag;
+
+	if (button == 4 || button == 5)
+	{
+		mouse_real = calc(x, data->max_x, data->min_x, data) + data->shift_x;
+		mouse_imag = calc(y, data->max_y, data->min_y, data) + data->shift_y;
+		if (button == 4)
+			data->zoom *= 1.05;
+		else if (button == 5)
+			data->zoom *= 0.95;
+		data->shift_x = mouse_real - calc(x, data->max_x, data->min_x, data);
+		data->shift_y = mouse_imag - calc(y, data->max_y, data->min_y, data);
+	}
 	else
 		return (0);
 	if (data->set == 1)
