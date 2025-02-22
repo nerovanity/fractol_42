@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_bonus_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihamani <ihamani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nero <nero@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:31:43 by ihamani           #+#    #+#             */
-/*   Updated: 2025/02/19 15:00:04 by ihamani          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:10:49 by nero             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ double	decimal(char *str, double r, int i)
 
 	t = 10;
 	j = i + 1;
+	if (i == 0 || !str[j] || str[j] == '.')
+	{
+		ft_putstr_fd("please provide a valid number\n", 2);
+		exit(1);
+	}
+	if (i != 0 && !(str[i - 1] >= '0' && str[j - 1] <= '9'))
+	{
+		ft_putstr_fd("please provide a valid number\n", 2);
+		exit(1);
+	}
 	while (str[j] && str[j] >= '0' && str[j] <= '9')
 	{
 		r += (str[j] - '0') / t;
