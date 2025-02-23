@@ -1,5 +1,5 @@
 CC = cc
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 SRCS = Mandatory/fractol.c \
 		Mandatory/fractol_utils.c \
 		Mandatory/libft1.c \
@@ -29,16 +29,16 @@ all : $(NAME)
 bonus : $(NAME_BON)
 
 $(NAME): $(OBJECTS)
-	$(CC) $(FLAGS) $(OBJECTS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS) -Lmlx_linux -lmlx_Linux -L/home/ihamani/.local/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(NAME_BON): $(OBJECTS_BON)
-	$(CC) $(FLAGS) $(OBJECTS_BON) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME_BON)
+	$(CC) $(FLAGS) $(OBJECTS_BON) -Lmlx_linux -lmlx_Linux -L/home/ihamani/.local/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME_BON)
 
 Mandatory/%.o: Mandatory/%.c $(HEADER)
-	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(FLAGS) -I/HOME/ihamani/.local/include -Imlx_linux -O3 -c $< -o $@
 
 Bonus/%.o: Bonus/%.c $(HEADER_BON)
-	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(FLAGS) -I/HOME/ihamani/.local/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	rm -rf $(OBJECTS) $(OBJECTS_BON)
